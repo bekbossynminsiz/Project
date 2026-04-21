@@ -1,0 +1,55 @@
+<div class="page">
+  <a routerLink="/movies" class="back-link">← Back</a>
+
+  <div *ngIf="errorMessage" class="alert error">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="movieData; else loadingBlock" class="detail-card">
+    <img
+      *ngIf="movieData.poster_url; else noPoster"
+      [src]="movieData.poster_url"
+      [alt]="movieData.title"
+      class="detail-poster"
+    />
+
+    <ng-template #noPoster>
+      <img
+        src="https://via.placeholder.com/300x450?text=No+Image"
+        [alt]="movieData.title"
+        class="detail-poster"
+      />
+    </ng-template>
+
+    <div class="detail-info">
+      <h1>{{ movieData.title }}</h1>
+
+      <p><strong>Genre:</strong> {{ movieData.genre_name || 'No genre' }}</p>
+      <p><strong>Release:</strong> {{ movieData.release_date || '—' }}</p>
+      <p><strong>Owner:</strong> {{ movieData.owner || '—' }}</p>
+
+      <p class="description">
+        {{ movieData.description || 'No description' }}
+      </p>
+
+      <div *ngIf="movieData.reviews?.length > 0" class="reviews">
+        <h3>Reviews</h3>
+
+        <div class="review-card" *ngFor="let review of movieData.reviews">
+          <p><strong>{{ review.user }}</strong> — ⭐ {{ review.stars }}/5</p>
+          <p>{{ review.body }}</p>
+          <small>{{ review.created_at }}</small>
+        </div>
+      </div>
+
+      <div *ngIf="!movieData.reviews || movieData.reviews.length === 0" class="reviews">
+        <h3>Reviews</h3>
+        <p>No reviews yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loadingBlock>
+    <p>Loading...</p>
+  </ng-template>
+</div>

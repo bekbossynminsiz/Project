@@ -1,0 +1,111 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.panel {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08);
+}
+
+.filters,
+.create-form,
+.card-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.create-form {
+  flex-direction: column;
+}
+
+input,
+select,
+textarea,
+button {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  cursor: pointer;
+  background: #1a1a2e;
+  color: white;
+  border: none;
+}
+
+button.danger {
+  background: #d90429;
+}
+
+.movie-grid,
+.tmdb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.movie-card,
+.tmdb-card {
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.tmdb-card img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.alert {
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.alert.error {
+  background: #ffe5e5;
+  color: #a40000;
+}
+
+.alert.success {
+  background: #e7f9ed;
+  color: #166534;
+}
+
+.btn {
+  display: inline-block;
+  background: #3a86ff;
+  color: white;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.db-poster {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}

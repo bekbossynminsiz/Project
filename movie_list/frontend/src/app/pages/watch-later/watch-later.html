@@ -1,0 +1,48 @@
+<div class="watch-later-page">
+  <h1>⏰ Watch Later</h1>
+
+  <div *ngIf="errorMessage" class="alert error">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="successMessage" class="alert success">
+    {{ successMessage }}
+  </div>
+
+  <p>Watch later count: {{ watchLaterMovies.length }}</p>
+
+  <div *ngIf="watchLaterMovies.length > 0; else emptyState">
+    <div class="movie-grid">
+      <div class="movie-card" *ngFor="let movie of watchLaterMovies">
+        <img
+          *ngIf="movie.poster_url; else noPoster"
+          [src]="movie.poster_url"
+          [alt]="movie.title"
+          class="db-poster"
+        />
+
+        <ng-template #noPoster>
+          <img
+            src="https://via.placeholder.com/300x450?text=No+Image"
+            [alt]="movie.title"
+            class="db-poster"
+          />
+        </ng-template>
+
+        <h3>{{ movie.title }}</h3>
+        <p><strong>Genre:</strong> {{ movie.genre_name || 'No genre' }}</p>
+        <p><strong>Release:</strong> {{ movie.release_date || '—' }}</p>
+        <p>{{ movie.description || 'No description' }}</p>
+
+        <div class="actions">
+          <a [routerLink]="['/movies', movie.id]" class="btn">Details</a>
+          <button class="danger" (click)="remove(movie.id)">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #emptyState>
+    <p>No movies saved for later.</p>
+  </ng-template>
+</div>

@@ -1,0 +1,19 @@
+<div class="login-wrapper">
+  <div class="login-card">
+    <h2>Login</h2>
+
+    <label>Username</label>
+    <input [(ngModel)]="username" type="text" placeholder="Enter username" />
+
+    <label>Password</label>
+    <input [(ngModel)]="password" type="password" placeholder="Enter password" />
+
+    @if (errorMessage) {
+      <p class="error">{{ errorMessage }}</p>
+    }
+
+    <button (click)="login()" [disabled]="loading">
+      {{ loading ? 'Loading...' : 'Login' }}
+    </button>
+  </div>
+</div>

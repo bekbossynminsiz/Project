@@ -1,0 +1,22 @@
+<nav class="navbar">
+  <a class="brand" routerLink="/movies">🎬 MovieList</a>
+
+  <div class="nav-links">
+    <a routerLink="/movies" routerLinkActive="active">Movies</a>
+
+    @if (auth.isLoggedIn$ | async) {
+      <a routerLink="/watchlist" routerLinkActive="active">📺 Watchlist</a>
+      <a routerLink="/favorites" routerLinkActive="active">⭐ Favorites</a>
+      <a routerLink="/watch-later" routerLinkActive="active">⏰ Watch Later</a>
+
+      <span class="username">{{ auth.getUsername() }}</span>
+      <button class="btn-logout" (click)="logout()">Logout</button>
+    } @else {
+      <a routerLink="/login" routerLinkActive="active">Login</a>
+    }
+  </div>
+</nav>
+
+<main class="main-content">
+  <router-outlet />
+</main>
